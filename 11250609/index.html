@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BouQuet</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            background:rgb(146, 182, 200) url(background.png) no-repeat center top;
+            background-size: 100%;
+        }
+      
+        .header{
+            position: fixed; 
+            top: 0;          
+            left: 0;         
+            width: 100%; 
+            z-index: 100;  
+            margin-bottom: 20px;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #ffffff;
+            background-color: rgb(98, 118, 130,0.5);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 8px 0 rgba(0, 8, 11, 0.8);
+            background: top top;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: auto 50px;
+
+         }
+
+        .header img{
+            margin: 16px 0 0 30px;
+            width: 170px;
+            height: 100%;
+            
+        }
+        .header h4{
+            padding: 0;
+            margin:9px 0 9px 0;
+        }
+        .logo{
+            width: 170px;
+            height: 100%;
+        }
+        .page a:link {
+            font-weight: bold;
+            text-decoration: none;
+            color: rgb(65, 56, 51);
+            background-color: #dbe1e7;
+            border: 2px solid ;
+            border-radius: 30px;
+            display: inline-block;
+            padding: 4px 20px;
+            margin: 17px 10px 0 20px;
+            position: relative;  
+            transition: 0.2s; 
+            
+        }
+        
+        
+        .page a:visited{
+            color: rgb(65, 56, 51);
+            background-color: #dbe1e7;
+        }
+        .page a:hover {
+            color: rgb(225, 227, 228);
+            background-color: #4f7592;
+        }
+        .log-in{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            border-radius: 1cap;
+            box-shadow: 0 0 8px 0 rgba(0, 8, 11, 0.5);
+            display: inline-block;
+            padding: 0 20px ;
+            margin: 18px 20px 15px 20px;
+            position: relative;  
+            transition: 0.5s; 
+        }
+        .log-in:hover{
+            background-color: #88bcca;
+        }
+        .log-in:active{
+            color: #2c506c;
+            background-color: #ffffff;
+        }
+        
+        .intro{
+            color: rgb(225, 227, 228);
+            margin: 50px 60px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+           
+        }
+        .text{
+            margin: 53px -90px 50px 0px ;
+            padding: 0;
+        }
+        .text img{
+            height: 11%;
+            margin:10px 20px 0 0;
+            position: relative;
+            border-radius: 1cap;
+            overflow: hidden;
+            box-shadow:0 0 20px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+            &:hover{ 
+                transform: translateY(-6px);
+            }
+        }
+        
+        .intro h1{
+            font-size: 65px;
+            text-shadow:5px 3px 6px rgba(0, 5, 14, 0.6);
+            margin: 0;
+        }
+        .intro h2{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 35px;
+            text-shadow:5px 3px 6px rgba(0, 5, 14, 0.6);
+            margin: 0;
+            padding: 0;
+        }
+        .intro h3{
+            font-size: 24px;
+            font-family: inherit;
+            font-weight: lighter;
+            text-shadow:1px 1px 4px rgb(0, 16, 46,0.9);
+        }
+        .intro h5{
+            width: 530px;
+            font-family: initial;
+            font-weight: lighter;
+            font-size: 15px;
+            text-shadow:1px 1px 5px rgb(0, 0, 0);
+        }
+        
+        .visual{
+            position: relative;
+            width: 450px;
+            height: 460px;
+            aspect-ratio: 4/5;
+            margin: 50px 0 0 0;
+            border-radius: 5cap;
+            overflow: hidden;
+            box-shadow:0 0 20px rgba(0, 36, 70, 0.7);
+            > img{
+               position: absolute;
+               top: 0;
+               left: 0px;
+               height: 100%;
+               object-fit: cover;
+               z-index: 1;
+               opacity: 0;
+           }
+        }
+        @keyframes slide {
+           0%, 17.857142% {
+           opacity: 0;
+           }
+           3.571428%, 14.2857% {
+           opacity: 1;
+           }
+        }
+        .visual > img{
+           animation: slide 24s linear infinite;
+            &:nth-child(2){ animation-delay: 4s; }
+            &:nth-child(3){ animation-delay: 8s; }
+            &:nth-child(4){ animation-delay: 12s; }
+            &:nth-child(5){ animation-delay: 16s; }
+            &:nth-child(6){ animation-delay: 20s; }
+        }
+
+       .card-list{
+            margin: 100px 50px 50px 50px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 18px;
+       }
+       .card img{
+        width: 101%;
+       }      
+       .card{
+        background-color: #dfe4e7;
+        width: 260px;
+        border-radius: 30px;
+        overflow: hidden;
+        transition: all 0.2s ease;
+        &:hover{ 
+                transform: translateY(-6px);
+                transform: scale(1.1); 
+                box-shadow:0 0 20px rgba(175, 228, 255, 0.7);
+            }
+       }
+       .card h2,p{
+        margin: 10px;    
+       }
+       .card h5{
+        font-family: initial;
+        font-weight: normal;
+        text-decoration: none;
+        color: rgb(238, 239, 240);
+        background-color: #88bcca;
+        border-radius: 20px;
+        display: inline-block;
+        padding: 10px 46px;
+        margin: 10px 20px 20px 30px;
+        transition: all 0.2s ease;
+        &:hover{ 
+                transform: translateY(-6px);
+                
+            }
+
+       }
+       .card-tittle{
+        padding: 0 20px;
+       }
+       .card-content{
+        padding: 0 20px;
+       }
+       .serve{
+        margin: 150px 20px auto;
+       }
+   
+    </style>
+    
+</head>
+<body>
+  
+  <section class="header">
+
+    <a href="index.html" class="logo">
+    <img src="LOGO.png" alt="點擊圖片回首頁">
+    </a>
+
+    <section class="page">
+        <a href="#">送禮專區</a>
+        <a href="#">訂單查詢</a>
+        <a href="#">關於我們</a>
+    </section>
+
+    <a href="#" class="log-in">
+    <h4>Log in</h4>
+    </a>
+
+  </section>
+
+
+  <section class="intro">
+
+    <div class="text">
+    <h3>花有顏色，人也有，你是什麼顏色呢？</h3>
+    <h1>花束，與你，與他</h1>
+    <h2>BouQuet 幫你捆把花</h2>
+    <h5><p>BouQuet 花坊 ，每一束花都是經由劉店長設計團隊精心設計，設計團隊多年設計花束經驗，可以針對您想送花的對象、用途及您的預算給您最專業的建議，讓收到花的對象在生命中留下最美好的回憶。</p><p>歡迎來店參觀比較，或是來電洽詢。</p></h5>
+    <a href="#" class="goods">
+    <img src="goods.png" alt="goods"></a>
+    <a href="#" class="sample">
+    <img src="sample.png" alt="sample"></a>
+    </div>
+
+    <div class="visual">
+        <img src="v1.jpg" alt="">
+        <img src="v2.jpg" alt="">
+        <img src="v3.jpg" alt="">
+        <img src="v4.jpg" alt="">
+        <img src="v5.jpg" alt="">
+        <img src="v6.jpg" alt="">
+    </div>
+
+  </section>
+  
+  <section class="card-list">
+
+    <div class="card">
+    <img src="budiao.jpg" alt="" class="c1">
+    <div class="card-tittle"><h2>不凋花</h2></div>
+    <div class="card-content">
+    <p>不凋花以真花製成，經特殊保鮮技術處理後能長期保持色澤與柔軟質地。象徵永恆與不變的愛，是送禮與裝飾的高雅選擇。</p></div>
+    <a href="#"><h5>查 看 更 多 。。。</h5></a>
+    </div>
+
+    <div class="card">
+    <img src="desk.jpg" alt="" class="c1">
+    <div class="card-tittle"><h2>桌上盆栽</h2></div>
+    <div class="card-content">
+    <p>桌上輕便型盆栽以真花及多肉製成，色彩柔和且無需澆水照顧。為居家辦公空間增添自然氣息與療癒氛圍綻放春意之美。</p></div>
+    <a href="#"><h5>查 看 更 多 。。。</h5></a>
+    </div>
+
+    <div class="card">
+    <img src="dry.jpg" alt="" class="c1">
+    <div class="card-tittle"><h2>乾燥花</h2></div>
+    <div class="card-content">
+    <p>乾燥花以自然花材風乾而成，色澤柔和具復古質感。可長時間保存且易於搭配，為空間增添溫暖與氣息，送禮的經典選擇。</p></div>
+    <a href="#"><h5>查 看 更 多 。。。</h5></a>
+    </div>
+
+    <div class="card">
+    <img src="ground.jpg" alt="" class="c1">
+    <div class="card-tittle"><h2>地上型花籃</h2></div>
+    <div class="card-content">
+    <p>地上型花籃以多樣鮮花精心編製，層次豐富、氣勢典雅，適合開幕、典禮或慶賀場合。為重要時刻增添華麗與祝賀氛圍。</p></div>
+    <a href="#"><h5>查 看 更 多 。。。</h5></a>
+    </div>
+
+    <div class="serve"><h4>Copyright © 2025 BouQuet. All Rights Reserved.</h4></div>
+
+    </div>
+</section>
+</body>
+</html>
